@@ -6,24 +6,18 @@ using UnityEngine.UI;
 
 public class Key : MonoBehaviour, IDropHandler
 {
-    public enum KeyType //키에 따라 다르게 설정해주기
-    {
-        Q,
-        W,
-        E,
-        R,
-        T,
-        A,
-        S,
-        D,
-        C,
-        F
-    }
-    public KeyType keyType;
+    public Skill mySkill;
 
     public void OnDrop(PointerEventData eventData)
     {
-        //안착됐을 때 키에 맞게... 해주기
-        //여기도 enum으로 키 정해주고 부여해줘야할듯
+        var skill = eventData.pointerDrag.GetComponent<Skill>();
+
+        //스킬 옮겼으면 그 자리에 있던 스킬도 있었던 자리에 옮겨야함
+
+        //여기서 키 타입을 바꾸게 하고 스킬쪽에서 키 타입에 따라 그 버튼을 누르면 그 스킬쓰게 하면 안돼?
+        mySkill = skill;
+        skill.key = this;
+        Debug.Log("!");
+        skill.transform.SetParent(this.transform);
     }
 }

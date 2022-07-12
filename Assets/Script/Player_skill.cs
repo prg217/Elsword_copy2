@@ -35,4 +35,12 @@ public class Player_skill : MonoBehaviour
             KeySetting.keys.Add((KeyAction) i, defaultKeys[i]);
         }
     }
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeySetting.keys[KeyAction.Skill1]))
+        {
+            Debug.Log("Skill1");
+        }
+    }
 }
