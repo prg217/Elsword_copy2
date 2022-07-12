@@ -12,24 +12,34 @@ public class UIManager : MonoBehaviour
     {
         var newKey = Instantiate(Resources.Load<Key>("Q"), layout);
         keyDic.Add(0, newKey);
+        newKey.gameObject.name = "Q";
         newKey = Instantiate(Resources.Load<Key>("W"), layout);
         keyDic.Add(1, newKey);
+        newKey.gameObject.name = "W";
         newKey = Instantiate(Resources.Load<Key>("E"), layout);
         keyDic.Add(2, newKey);
+        newKey.gameObject.name = "E";
         newKey = Instantiate(Resources.Load<Key>("R"), layout);
         keyDic.Add(3, newKey);
+        newKey.gameObject.name = "R";
         newKey = Instantiate(Resources.Load<Key>("T"), layout);
         keyDic.Add(4, newKey);
+        newKey.gameObject.name = "T";
         newKey = Instantiate(Resources.Load<Key>("A"), layout);
         keyDic.Add(5, newKey);
+        newKey.gameObject.name = "A";
         newKey = Instantiate(Resources.Load<Key>("S"), layout);
         keyDic.Add(6, newKey);
+        newKey.gameObject.name = "S";
         newKey = Instantiate(Resources.Load<Key>("D"), layout);
         keyDic.Add(7, newKey);
+        newKey.gameObject.name = "D";
         newKey = Instantiate(Resources.Load<Key>("C"), layout);
         keyDic.Add(8, newKey);
+        newKey.gameObject.name = "C";
         newKey = Instantiate(Resources.Load<Key>("F"), layout);
         keyDic.Add(9, newKey);
+        newKey.gameObject.name = "F";
 
         var skillKey = keyDic[0];
         var skill = Instantiate(Resources.Load<Skill>("Skill1"), keyDic[0].transform);

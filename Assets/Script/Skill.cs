@@ -22,6 +22,18 @@ public class Skill : MonoBehaviour, IDragHandler, IEndDragHandler
     public KeyType keyType;
     public Key key;
 
+    void EnumChange()
+    {
+        if (key.name == "Q")
+        {
+            keyType = KeyType.Q;
+        }
+        else if (key.name == "W")
+        {
+            keyType = KeyType.W;
+        }
+    }
+
     public void OnDrag(PointerEventData eventData)
     {
         transform.position = Input.mousePosition;
@@ -31,5 +43,6 @@ public class Skill : MonoBehaviour, IDragHandler, IEndDragHandler
     public void OnEndDrag(PointerEventData eventData)
     {
         GetComponent<Image>().raycastTarget = true;
+        EnumChange();
     }
 }
