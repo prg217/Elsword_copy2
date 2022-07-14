@@ -15,7 +15,8 @@ public class Key : MonoBehaviour, IDropHandler
         //여기서 키 타입을 바꾸게 하고 스킬쪽에서 키 타입에 따라 그 버튼을 누르면 그 스킬쓰게 하면 안돼?
         MyKeyCall(skill);
         SkillCall(skill);
-
+        //스킬을 바꾸고 스킬키 누르면 스킬키에 따라 그 스킬이 나오게 하기
+        //
     }
     
     void MyKeyCall(Skill skill)
@@ -25,9 +26,7 @@ public class Key : MonoBehaviour, IDropHandler
         mySkill.transform.position = parent.transform.position;
         mySkill.key = parent.GetComponent<Key>(); //키 바꿔주기
         mySkill.EnumChange();
-        //Debug.Log(mySkill);
-        //Debug.Log(mySkill.key);
-        Debug.Log(mySkill.name + "을 " + parent.name + "으로 넘겨줌");
+        parent.GetComponent<Key>().mySkill = mySkill; //옮겨주는 부모의 mySkill도 바꿔야 정상 작동
     }
 
     void SkillCall(Skill skill)
@@ -37,11 +36,5 @@ public class Key : MonoBehaviour, IDropHandler
         skill.transform.SetParent(this.transform);
         skill.transform.position = this.transform.position;
         skill.EnumChange();
-        //Debug.Log(skill);
-        //Debug.Log(skill.key);
-        Debug.Log(mySkill.name + "으로 " + gameObject.name + "에 등록");
-        //처음에는 직접 부모의 이름으로 하려고 했지만, (참고 자료 : https://magicmon.tistory.com/102)
-        //Enum.Parse가 왜인지 안돼 일단, Skill쪽에서 if문으로 관리하게 해줬다.
-        //나중에 어떤게 더 효율적인지 한 번 시도해볼 것.
     }
 }

@@ -11,11 +11,12 @@ GameObject:
   - component: {fileID: 2828581412480998714}
   - component: {fileID: 2828581412480998712}
   - component: {fileID: 2828581412480998715}
-  - component: {fileID: 2930841209270365886}
-  - component: {fileID: 4560061283931058684}
-  - component: {fileID: -5434538046017435964}
+  - component: {fileID: -7691960945535408700}
+  - component: {fileID: -1883254721378612755}
+  - component: {fileID: -513063284182670414}
+  - component: {fileID: -4019957184292235868}
   m_Layer: 5
-  m_Name: Skill8
+  m_Name: Skill7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -62,7 +63,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5255874, g: 0.8773585, b: 0.6596113, a: 1}
+  m_Color: {r: 0.29860651, g: 0.6415094, b: 0.26931292, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -78,7 +79,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!223 &2930841209270365886
+--- !u!223 &-7691960945535408700
 Canvas:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -99,7 +100,7 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 1
   m_TargetDisplay: 0
---- !u!114 &4560061283931058684
+--- !u!114 &-1883254721378612755
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -116,7 +117,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &-5434538046017435964
+--- !u!114 &-513063284182670414
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -128,8 +129,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a53aeaa08a6ef374aab4e6dffaa723d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyType: 7
+  keyType: 6
   key: {fileID: 0}
+--- !u!114 &-4019957184292235868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2828581412480998717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d94bb93631674c4cb7d8bf73cc111d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillName: 6
+  skill: {fileID: -513063284182670414}
 --- !u!1 &2828581412883222839
 GameObject:
   m_ObjectHideFlags: 0
@@ -188,7 +203,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.154181, g: 0.3962264, b: 0.08784264, a: 1}
+  m_Color: {r: 0.4712095, g: 1, b: 0.32549024, a: 1}
   m_RaycastTarget: 0
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -207,4 +222,4 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 8
+  m_Text: 7

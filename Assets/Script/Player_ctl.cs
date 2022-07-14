@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//플레이어가 안뒤집어지게도 해야함(넘어지지 않게)
 public class Player_ctl : MonoBehaviour
 {
     public bool isJump = false;
