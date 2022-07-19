@@ -9,6 +9,7 @@ public class Player_ctl : MonoBehaviour
     public float speed = 10f;
     public float jumpSpeed = 10f;
     public static int direction = 1; //캐릭터 방향
+    public static bool skillAct = false; //스킬쓸 때 못움직이게 하는거
 
     public Rigidbody body;
 
@@ -21,7 +22,15 @@ public class Player_ctl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Move();
+        if (skillAct == false)
+        {
+            Move();
+        }
+
+        if (skillAct == true)
+        {
+            body.velocity = new Vector3(0, 0, 0); //아예 멈추게 하기 위함
+        }
     }
 
     private void Move()

@@ -75,17 +75,29 @@ public class Player_skill : MonoBehaviour
     {
         Debug.Log("Skill2");
         //젠즈
-        playerTransSave = player.transform.position;
-        direction = Player_ctl.direction;
+        player.GetComponent<Rigidbody>().useGravity = false; //true는 스킬 오브젝트가 삭제될 때 같이 true되게 해줬음
+        player.transform.position += new Vector3(0, 1.5f, 0);
+        Player_ctl.skillAct = true; //이것도 스킬 오브젝트가 삭제될 때
 
-        yield return new WaitForSeconds(0.3f);
+        playerTransSave = player.transform.position;
+
         Instantiate(Resources.Load("Prefab/SkillObj/Skill2Obj"), playerTransSave + new Vector3(0, 1, 0), Quaternion.identity);
-        //플레이어 공중에 좀 떠서 1.5초 정도 못움직이게 하기
+
+        yield return null;
     }
-    void Skill3()
+    IEnumerator Skill3()
     {
         Debug.Log("Skill3");
         //밀키웨이
+        player.GetComponent<Rigidbody>().useGravity = false; //true는 스킬 오브젝트가 삭제될 때 같이 true되게 해줬음
+        Player_ctl.skillAct = true; //이것도 스킬 오브젝트가 삭제될 때
+
+        playerTransSave = player.transform.position;
+        direction = Player_ctl.direction;
+
+        Instantiate(Resources.Load("Prefab/SkillObj/Skill3Obj"), playerTransSave + new Vector3(direction * 8, 0, 0), Quaternion.identity);
+
+        yield return null;
     }
     void Skill4()
     {

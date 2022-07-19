@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Skill2Obj_Script : MonoBehaviour
 {
-    public int damage = 10 * (int)(GameManager.playerPower * 0.05); //전투력 비례 해서 데미지 강해지게 만들어야함
+    int damage = 20 * (int)(GameManager.playerPower * 0.05); //전투력 비례 해서 데미지 강해지게 만들어야함
 
     private void Start()
     {
@@ -18,16 +18,17 @@ public class Skill2Obj_Script : MonoBehaviour
 
     void DestroyObj()
     {
+        GameManager.player.GetComponent<Rigidbody>().useGravity = true;
+        Player_ctl.skillAct = false;
         Destroy(gameObject);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.tag == "Monster")
+        if (other.gameObject.tag == "Monster")
         {
             //데미지 주기
             Monster.hp -= damage;
-            Debug.Log(Monster.hp);
         }
     }
 }
