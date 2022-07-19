@@ -24,6 +24,8 @@ public class Player_skill : MonoBehaviour
     public SkillName skillName;
     public Skill skill;
     public GameObject player;
+    Vector3 playerTransSave;
+    public int direction; //캐릭터 방향
 
     float time = 0;
     float timeSave = 0;
@@ -41,39 +43,49 @@ public class Player_skill : MonoBehaviour
         if (Input.GetKeyDown(key))
         {
             //열거형 이름에 따라 함수 호출하게 하기
-            Invoke(skillName.ToString(), 0); //앞은 호출할 함수 이름, 뒤는 지연 시간
+            //Invoke(skillName.ToString(), 0); //앞은 호출할 함수 이름, 뒤는 지연 시간
             //다른 방법 없나 살펴봐야겠다.
+            StartCoroutine(skillName.ToString()); //코루틴 호출
+            //보이드 함수랑 코루틴 함수랑 호출이 달라서 좀 바꿔야할듯
+            //일단 다 코루틴으로 해보자(시간 많이 사용해야할 것 같으니)
         }
     }
 
-    void Skill1()
+    IEnumerator Skill1()
     {
         Debug.Log("Skill1");
-        Instantiate(Resources.Load("Prefab/SkillObj/Skill1Obj"), player.transform.position + new Vector3(3, 3, 0), Quaternion.Euler(1, -4, 15));
-        timeSave = time;
-        //연속해서 4번 더 나오게 하고 싶음
-        /*for (int i = 0; i < 5;)
+        //헤븐즈 피스트?
+        //미리 위치값과 방향값을 저장해서 도중에 플레이어가 움직여도 스킬 위치에는 영향 안가게 하기
+        playerTransSave = player.transform.position;
+        direction = Player_ctl.direction;
+        //플레이어의 방향값을 불러와 +인지 -인지 해주기
+
+        for (int i = 0; i < 5; i++)
         {
-            if (time >= timeSave + 0.3f)
-            {
-                Instantiate(Resources.Load("Prefab/SkillObj/Skill1Obj"), player.transform.position + new Vector3(3, 3, 0), Quaternion.Euler(1 + i, -4, 15));
-                timeSave = time;
-                i++;
-            }
-        }*/
-        //무한로딩 걸리니까 개선 필요
+            Instantiate(Resources.Load("Prefab/SkillObj/Skill1Obj"), playerTransSave + new Vector3(direction * (3 + (i * 3.5f)), 8, 0), Quaternion.Euler(1, -4, 15));
+            yield return new WaitForSeconds(0.3f); //0.3초 동안 기다림
+        }
+        //맵 따라가는 스킬은 로테이션을... 받아와서 바꿔줘야할 것 같다
 
         //쿨타임 주기
         //쿨타임 줄 때 UI도 쿨타임 표시되게 하기
     }
 
-    void Skill2()
+    IEnumerator Skill2()
     {
         Debug.Log("Skill2");
+        //젠즈
+        playerTransSave = player.transform.position;
+        direction = Player_ctl.direction;
+
+        yield return new WaitForSeconds(0.3f);
+        Instantiate(Resources.Load("Prefab/SkillObj/Skill2Obj"), playerTransSave + new Vector3(0, 1, 0), Quaternion.identity);
+        //플레이어 공중에 좀 떠서 1.5초 정도 못움직이게 하기
     }
     void Skill3()
     {
         Debug.Log("Skill3");
+        //밀키웨이
     }
     void Skill4()
     {

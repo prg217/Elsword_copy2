@@ -9,7 +9,7 @@ public class Camera : MonoBehaviour
 
     private void LateUpdate()
     {
-        transform.position = player.transform.position + new Vector3(0, 3.5f, -13);
+        transform.position = player.transform.position + new Vector3(0, 2.5f, -13);
         transform.rotation = Quaternion.Lerp(transform.rotation, player.transform.rotation, Time.deltaTime * speed); //부드럽게 회전
     }
 }
