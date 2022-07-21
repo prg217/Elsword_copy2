@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class Key : MonoBehaviour, IDropHandler
 {
     public Skill mySkill;
+    public static bool isDrop = false;
 
     public void OnDrop(PointerEventData eventData)
     {
@@ -16,7 +17,8 @@ public class Key : MonoBehaviour, IDropHandler
         MyKeyCall(skill);
         SkillCall(skill);
         //스킬을 바꾸고 스킬키 누르면 스킬키에 따라 그 스킬이 나오게 하기
-        //
+
+        isDrop = true;
     }
     
     void MyKeyCall(Skill skill)

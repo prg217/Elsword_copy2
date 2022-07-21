@@ -9,7 +9,7 @@ public class Floor : MonoBehaviour
         player.transform.rotation = transform.rotation;
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.tag == "Player")
         {

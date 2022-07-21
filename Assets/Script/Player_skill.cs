@@ -25,10 +25,7 @@ public class Player_skill : MonoBehaviour
     public Skill skill;
     public GameObject player;
     Vector3 playerTransSave;
-    public int direction; //캐릭터 방향
-
-    float time = 0;
-    float timeSave = 0;
+    public static int direction; //캐릭터 방향
 
     public void Start()
     {
@@ -37,8 +34,6 @@ public class Player_skill : MonoBehaviour
 
     private void Update()
     {
-        time = Time.deltaTime;
-
         KeyCode key = (KeyCode)Enum.Parse(typeof(KeyCode), skill.keyType.ToString()); //Skill쪽에서 등록된 keyType에 따라 KeyCode에 입력
         if (Input.GetKeyDown(key))
         {
@@ -62,7 +57,12 @@ public class Player_skill : MonoBehaviour
 
         for (int i = 0; i < 5; i++)
         {
-            Instantiate(Resources.Load("Prefab/SkillObj/Skill1Obj"), playerTransSave + new Vector3(direction * (3 + (i * 3.5f)), 8, 0), Quaternion.Euler(1, -4, 15));
+            //미처 스킬이 다 발동되기전에 방향 바꾸어서 또 쓰면 direction이 바뀌어 기존에 진행되고 있던 스킬도 방향이 바뀐다
+            var instance = Instantiate(Resources.Load<GameObject>("Prefab/SkillObj/Skill1Obj"), new Vector3(0, 0, 0)/*playerTransSave + new Vector3(direction * (3 + (i * 3.5f)), 8, 0)*/, Quaternion.identity);
+            //instance.transform.localPosition = playerTransSave + new Vector3(direction * (3 + (i * 3.5f)), 8, 0);
+            //instance.transform.Translate(playerTransSave + new Vector3(direction * (3 + (i * 3.5f)), 8, 0));
+            //단순히 로컬 좌표를 이렇게 해준다고 해도 안될듯... 회전값이 있는 로컬 좌표에 이만큼 더해주고 싶다!로 해야할듯
+            //여기서 x를 더해줄 때 문제가 생기는 것 같다. 이건 연속으로 소환하는 거니까... 
             yield return new WaitForSeconds(0.3f); //0.3초 동안 기다림
         }
         //맵 따라가는 스킬은 로테이션을... 받아와서 바꿔줘야할 것 같다
@@ -99,17 +99,26 @@ public class Player_skill : MonoBehaviour
 
         yield return null;
     }
-    void Skill4()
+    IEnumerator Skill4()
     {
         Debug.Log("Skill4");
+        //카르마
+        playerTransSave = player.transform.position;
+        direction = Player_ctl.direction;
+
+        Instantiate(Resources.Load("Prefab/SkillObj/Skill4Obj"), playerTransSave + new Vector3(direction * 3.5f, 0, 0), Quaternion.identity);
+
+        yield return null;
     }
     void Skill5()
     {
         Debug.Log("Skill5");
+        //창 튀어나오기
     }
     void Skill6()
     {
         Debug.Log("Skill6");
+        //레트리뷰션?
     }
     void Skill7()
     {

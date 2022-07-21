@@ -450,7 +450,7 @@ GameObject:
   - component: {fileID: 853699750}
   m_Layer: 0
   m_Name: FloorWall
-  m_TagString: Untagged
+  m_TagString: FloorWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -480,8 +480,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.05528721, y: 5.1768713, z: 1}
-  m_Center: {x: -0.44412142, y: 2.0884356, z: -0.000009522219}
+  m_Size: {x: 0.9453834, y: 5.1768713, z: 1}
+  m_Center: {x: -0.010781041, y: 2.0884356, z: -0.000012922368}
 --- !u!114 &853699750
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -698,7 +698,7 @@ GameObject:
   - component: {fileID: 1371666096}
   m_Layer: 0
   m_Name: FloorWall
-  m_TagString: Untagged
+  m_TagString: FloorWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -728,8 +728,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.046906356, y: 4.7634177, z: 1}
-  m_Center: {x: 0.47654614, y: 1.8817075, z: 0}
+  m_Size: {x: 1.0007086, y: 4.7634177, z: 1}
+  m_Center: {x: -0.0003560066, y: 1.8817075, z: 0}
 --- !u!114 &1371666096
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -923,7 +923,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1835352980}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.5, y: 2.5, z: -4}
+  m_LocalPosition: {x: 43.7, y: 2.5, z: -4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 234235704}

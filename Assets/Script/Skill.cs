@@ -40,5 +40,15 @@ public class Skill : MonoBehaviour, IDragHandler, IEndDragHandler
     {
         GetComponent<Image>().raycastTarget = true;
         gameObject.GetComponent<Canvas>().sortingOrder = 1; //다시 원래대로
+
+        if (Key.isDrop == false) //키쪽에서 드롭을 안받았을 시에 다시 원래 자리로 돌아가게 해줌
+        {
+            var parent = GameObject.Find(keyType.ToString()); //열거형에 부모 이름을 저장해뒀으니 그걸로찾아줌
+            transform.position = parent.transform.position;
+        }
+        else
+        {
+            Key.isDrop = false;
+        }
     }
 }
