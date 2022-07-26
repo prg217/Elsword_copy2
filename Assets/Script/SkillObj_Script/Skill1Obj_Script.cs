@@ -8,13 +8,16 @@ public class Skill1Obj_Script : MonoBehaviour
     bool isFloor = false;
     int damage = 10 * (int)(GameManager.playerPower * 0.05); //전투력 비례 해서 데미지 강해지게 만들어야함
 
-    public static int direction = Player_skill.direction;
+    public int direction = Player_skill.direction;
 
     private void Start()
     {
         Invoke("DestroyObj", 1);
 
         transform.Rotate(new Vector3(1, -4, direction * 15));
+        Debug.Log(direction);
+        //값이 제대로 전달 안됨
+        //여기부터 시작할 것
     }
 
     void Update()
