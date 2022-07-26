@@ -11,5 +11,6 @@ public class Camera : MonoBehaviour
     {
         transform.position = player.transform.position + new Vector3(0, 2.5f, -13);
         transform.rotation = Quaternion.Lerp(transform.rotation, player.transform.rotation, Time.deltaTime * speed); //부드럽게 회전
+        //그리고 회전 후에 플레이어를 가운데에 둘 수 있게 해야할듯
     }
 }

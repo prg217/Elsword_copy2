@@ -50,25 +50,17 @@ public class Player_skill : MonoBehaviour
     {
         Debug.Log("Skill1");
         //헤븐즈 피스트?
-        //미리 위치값과 방향값을 저장해서 도중에 플레이어가 움직여도 스킬 위치에는 영향 안가게 하기
         playerTransSave = player.transform.position;
         direction = Player_ctl.direction;
         //플레이어의 방향값을 불러와 +인지 -인지 해주기
 
-        for (int i = 0; i < 5; i++)
-        {
-            //미처 스킬이 다 발동되기전에 방향 바꾸어서 또 쓰면 direction이 바뀌어 기존에 진행되고 있던 스킬도 방향이 바뀐다
-            var instance = Instantiate(Resources.Load<GameObject>("Prefab/SkillObj/Skill1Obj"), new Vector3(0, 0, 0)/*playerTransSave + new Vector3(direction * (3 + (i * 3.5f)), 8, 0)*/, Quaternion.identity);
-            //instance.transform.localPosition = playerTransSave + new Vector3(direction * (3 + (i * 3.5f)), 8, 0);
-            //instance.transform.Translate(playerTransSave + new Vector3(direction * (3 + (i * 3.5f)), 8, 0));
-            //단순히 로컬 좌표를 이렇게 해준다고 해도 안될듯... 회전값이 있는 로컬 좌표에 이만큼 더해주고 싶다!로 해야할듯
-            //여기서 x를 더해줄 때 문제가 생기는 것 같다. 이건 연속으로 소환하는 거니까... 
-            yield return new WaitForSeconds(0.3f); //0.3초 동안 기다림
-        }
-        //맵 따라가는 스킬은 로테이션을... 받아와서 바꿔줘야할 것 같다
+        Instantiate(Resources.Load<GameObject>("Prefab/SkillObj/SkillSpawn"), playerTransSave + new Vector3(0, 8, 0), Quaternion.identity);
+        //여기에서 많이 헷갈렸다.
+        //원래는 여기와 Skill1Obj_Script에서 해결하려 했는데
+        //따로 투명한 스킬 스폰을 만들어서 걔가 움직이면서 스폰하게 해줘서 매끄럽게 이동이 가능했다.
+        //그렇게 하면서 원래 여기서 처리해줘서 스킬 또 시전하면 전에꺼 나오던게 위치 바꿔서 나오던게 지금은 다 각자 따로따로 나오게 해결됐다.
 
-        //쿨타임 주기
-        //쿨타임 줄 때 UI도 쿨타임 표시되게 하기
+        yield return null;
     }
 
     IEnumerator Skill2()

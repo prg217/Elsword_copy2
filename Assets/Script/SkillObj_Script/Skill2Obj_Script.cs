@@ -9,6 +9,7 @@ public class Skill2Obj_Script : MonoBehaviour
     private void Start()
     {
         Invoke("DestroyObj", 1.5f);
+        transform.rotation = GameManager.player.transform.rotation;
     }
 
     void Update()
