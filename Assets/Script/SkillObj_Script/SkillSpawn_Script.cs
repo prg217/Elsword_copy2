@@ -5,7 +5,7 @@ using UnityEngine;
 public class SkillSpawn_Script : MonoBehaviour
 {
     public float speed = 3f;
-    public static int direction = Player_skill.direction; //방향값이 쓸때마다 바뀌지 않음!
+    int direction = Player_skill.direction; //방향값이 쓸때마다 바뀌지 않음!
     // Start is called before the first frame update
     void Start()
     {
@@ -34,7 +34,8 @@ public class SkillSpawn_Script : MonoBehaviour
         {
             if (i != 0)
             {
-                Instantiate(Resources.Load<GameObject>("Prefab/SkillObj/Skill1Obj"), transform.position, Quaternion.identity);
+                GameObject instance = Instantiate(Resources.Load<GameObject>("Prefab/SkillObj/Skill1Obj"), transform.position, Quaternion.identity);
+                instance.transform.Rotate(new Vector3(1, -4, direction * 15));
             }
 
             yield return new WaitForSeconds(0.3f);
