@@ -13,10 +13,13 @@ public class Player_ctl : MonoBehaviour
 
     public Rigidbody body;
 
-    // Start is called before the first frame update
+    private void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
     void Start()
     {
-        
+        //평타도 만들기
     }
 
     // Update is called once per frame

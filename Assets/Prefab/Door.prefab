@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3603192007288720165
+--- !u!1 &7071364313780732114
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,48 +8,48 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3603192007288720161}
-  - component: {fileID: 3603192007288720166}
-  - component: {fileID: 3603192007288720167}
-  - component: {fileID: 3603192007288720164}
-  - component: {fileID: -5572096019653833074}
-  - component: {fileID: -9020682667123464894}
+  - component: {fileID: 7071364313780732118}
+  - component: {fileID: 7071364313780732117}
+  - component: {fileID: 7071364313780732116}
+  - component: {fileID: 7071364313780732115}
+  - component: {fileID: -1028277976340313790}
+  - component: {fileID: 5197135004908773492}
   m_Layer: 0
-  m_Name: Monster
-  m_TagString: Monster
+  m_Name: Door
+  m_TagString: Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3603192007288720161
+--- !u!4 &7071364313780732118
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3603192007288720165}
+  m_GameObject: {fileID: 7071364313780732114}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.56, z: -4}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 115, y: 10.59, z: 27.8}
+  m_LocalScale: {x: 6, y: 8, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &3603192007288720166
+--- !u!33 &7071364313780732117
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3603192007288720165}
+  m_GameObject: {fileID: 7071364313780732114}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &3603192007288720167
+--- !u!23 &7071364313780732116
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3603192007288720165}
+  m_GameObject: {fileID: 7071364313780732114}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e8de43b026c2f554983e88a78671dab0, type: 2}
+  - {fileID: 2100000, guid: c8d786ebb8621754e8c8b2868999bd30, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -82,26 +82,26 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &3603192007288720164
+--- !u!65 &7071364313780732115
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3603192007288720165}
+  m_GameObject: {fileID: 7071364313780732114}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &-5572096019653833074
+--- !u!54 &-1028277976340313790
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3603192007288720165}
+  m_GameObject: {fileID: 7071364313780732114}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
@@ -109,17 +109,19 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &-9020682667123464894
+--- !u!114 &5197135004908773492
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3603192007288720165}
+  m_GameObject: {fileID: 7071364313780732114}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8001a20dcf08e3c4da1e11fa6d58287d, type: 3}
+  m_Script: {fileID: 11500000, guid: 9014b7f19f4ec244faf7512d5e87c62a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hp: 5
+  door: {fileID: 0}

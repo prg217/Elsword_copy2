@@ -10,11 +10,14 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         player = GameObject.Find("Player");
+
+        //씬 이동해도 데이터 날아가지 않게 해주기
+        DontDestroyOnLoad(gameObject);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

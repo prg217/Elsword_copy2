@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-//https://www.youtube.com/watch?v=ODB3IOFqmrE
 
+//일단 스킬 스크립트를 다 따로 만들어줬는데 나중에 하나로 통합해서 스킬 매니저를 만든 후 enum으로 따로 관리하면 좋을 것 같기도
 public class Player_skill : MonoBehaviour
 {
     public enum SkillName //스킬들 들어갈 곳
@@ -81,6 +81,7 @@ public class Player_skill : MonoBehaviour
     {
         Debug.Log("Skill3");
         //밀키웨이
+        //이것도 수정 필요
         player.GetComponent<Rigidbody>().useGravity = false; //true는 스킬 오브젝트가 삭제될 때 같이 true되게 해줬음
         Player_ctl.skillAct = true; //이것도 스킬 오브젝트가 삭제될 때
 

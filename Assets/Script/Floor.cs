@@ -15,5 +15,9 @@ public class Floor : MonoBehaviour
         {
             Rotation(other.gameObject);
         }
+        if (other.gameObject.tag == "Monster")
+        {
+            Rotation(other.gameObject);
+        }
     }
 }

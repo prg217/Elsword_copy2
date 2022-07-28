@@ -7,7 +7,10 @@ public class UIManager : MonoBehaviour
 {
     public Transform layout;
     public static Dictionary<int, Key> keyDic = new Dictionary<int, Key>();
-
+    private void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
     private void Start()
     {
         var newKey = Instantiate(Resources.Load<Key>("Prefab/Key/Q"), layout);

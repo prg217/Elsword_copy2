@@ -36,7 +36,12 @@ public class Skill4Obj_Script : MonoBehaviour
         if (other.gameObject.tag == "Monster")
         {
             //데미지 주기
-            Monster.hp -= damage;
+            other.GetComponent<Monster>().hp -= damage;
+        }
+
+        if (other.gameObject.tag == "Door")
+        {
+            other.GetComponent<Door>().hp -= 1;
         }
 
         if (other.gameObject.tag == "FloorWall")
@@ -51,7 +56,7 @@ public class Skill4Obj_Script : MonoBehaviour
         if (other.gameObject.tag == "Monster")
         {
             //데미지 주기
-            Monster.hp -= damage;
+            other.GetComponent<Monster>().hp -= damage;
         }
     }
 }
