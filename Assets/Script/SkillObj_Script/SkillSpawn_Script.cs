@@ -35,7 +35,8 @@ public class SkillSpawn_Script : MonoBehaviour
             if (i != 0)
             {
                 GameObject instance = Instantiate(Resources.Load<GameObject>("Prefab/SkillObj/Skill1Obj"), transform.position, Quaternion.identity);
-                instance.transform.Rotate(new Vector3(1, -4, direction * 15));
+                instance.transform.rotation = transform.rotation;
+                instance.transform.Rotate(instance.transform.rotation.x, instance.transform.rotation.y, direction * 15);
             }
 
             yield return new WaitForSeconds(0.3f);

@@ -7,62 +7,147 @@ public class Monster : MonoBehaviour
     public int hp = 100;
     RaycastHit hitInfo;
     float speed = 3f;
+    float stateSpeed = 1.5f;
+
+    int layerMask;
+    int randomState;
+    public float time;
+    public float timeSave = 0;
+    bool player = false;
+
+    public int power = 10;
+    int direction = 1;
+
+    private void Awake()
+    {
+        layerMask = 1 << LayerMask.NameToLayer("Player");
+    }
 
     void Start()
     {
-        
+        randomState = Random.Range(0, 5); //0부터 4까지
     }
 
     void Update()
     {
+        time += Time.deltaTime;
+
         if (hp <= 0)
         {
             Destroy(gameObject);
         }
 
-        Move();
-        Ray();
+        if (player == false)
+        {
+            Move();
+        }
+
+        PlayerRay();
     }
 
     private void Move()
     {
-        //멋대로 움직이다가 전방에 플레이어 발견하면 플레이어를 향해 감
+        //랜덤으로 멈출지 오른쪽갈지 왼쪽갈지 정해준다
+        //그리고 한 3초마다 상태 재정의 해주면 될 것 같음
+        if (timeSave + 3 <= time)
+        {
+            randomState = Random.Range(0, 5); //0부터 4까지
+            timeSave = time;
+        }
+
+        if (Physics.Raycast(transform.position, transform.right, out hitInfo, 1.5f))
+        {
+            randomState = Random.Range(0, 5); //0부터 4까지
+
+            if (randomState == 1)
+            {
+                randomState = 2;
+            }
+        }
+        else if (Physics.Raycast(transform.position, transform.right * -1, out hitInfo, 1.5f))
+        {
+            randomState = Random.Range(0, 5); //0부터 4까지
+
+            if (randomState == 2)
+            {
+                randomState = 1;
+            }
+        }
+
+
+        switch (randomState)
+        {
+            case 1:
+                transform.Translate(Vector3.right * Time.deltaTime * stateSpeed);
+                direction = 1;
+                break;
+
+            case 2:
+                transform.Translate(Vector3.left * Time.deltaTime * stateSpeed);
+                direction = -1;
+                break;
+
+            default:
+                break;
+        }
+
     }
 
-    void Ray()
+    void PlayerRay()
     {
-        if (Physics.Raycast(transform.position, transform.right, out hitInfo, 1f))
+        //인식 범위에 닿으면 ! 한 번 띄워주기 => 시간 남을때 하자
+        Debug.DrawRay(transform.position, transform.right * 20f, Color.red);
+        if (Physics.BoxCast(transform.position + new Vector3(0, 10, 0), new Vector3(1, 10, 10), transform.right, out hitInfo, GameManager.player.transform.rotation, 20f, layerMask))
         {
-            //여기에 공격하는거 넣기
-            if (hitInfo.transform.name == "Player")
-            {
-
-            }
-        }
-        else if (Physics.BoxCast(transform.position, new Vector3(1, 10, 1), transform.right, out hitInfo, transform.rotation, 10f))
-        {
+            player = true;
             //박스캐스트를 이용해서 하니 Y축도 잡히게 되었다.
-            //다만 휘어지는 곳에 플레이어가 갔을 때 따라오지 않는 것을 보아 x축과 z축도 좀 손 봐야할 것 같다.
-            if (hitInfo.transform.name == "Player")
+            //FloorWall을 인식해서 문제가 있었는데, 레이어를 따로 분리해서 인식시켜주니 정상적으로 작동된다.
+            if (Physics.Raycast(transform.position, transform.right, out hitInfo, 1.5f, layerMask))
+            {
+                //여기에 공격하는거 넣기
+                //한 1초 동안 기다리고 데미지 들어가게
+                StartCoroutine("Attack");
+            }
+            else
             {
                 transform.Translate(Vector3.right * Time.deltaTime * speed);//로컬 좌표
+                direction = 1;
             }
         }
-
-        if (Physics.Raycast(transform.position, transform.right * -1, out hitInfo, 1f))
+        else if (Physics.BoxCast(transform.position + new Vector3(0, 10, 0), new Vector3(1, 10, 10), transform.right * -1, out hitInfo, GameManager.player.transform.rotation, 20f, layerMask))
         {
-            //여기에 공격하는거 넣기
-            if (hitInfo.transform.name == "Player")
+            player = true;
+            if (Physics.Raycast(transform.position, transform.right * -1, out hitInfo, 1.5f, layerMask))
             {
-
+                //여기에 공격하는거 넣기
+                StartCoroutine("Attack");
+               
             }
-        }
-        else if (Physics.BoxCast(transform.position, new Vector3(1, 10, 1), transform.right * -1, out hitInfo, transform.rotation, 10f))
-        {
-            if (hitInfo.transform.name == "Player")
+            else
             {
                 transform.Translate(Vector3.left * Time.deltaTime * speed);//로컬 좌표
+                direction = -1;
             }
         }
+        else
+        {
+            player = false;
+        }
+
+    }
+
+    IEnumerator Attack()
+    {
+        for (int i = 0; i < 2; i++)
+        {
+            if (i == 1)
+            {
+                var attack = Instantiate(Resources.Load<GameObject>("Prefab/MonsterAttack/Attack1"), transform.position + new Vector3(direction * 2, 0, 0), Quaternion.identity);
+                attack.GetComponent<Attack1_Script>().power = power;
+            }
+            yield return new WaitForSeconds(1f);
+        }
+
+        //무한반복 안되게 쿨타임 주기
     }
 }

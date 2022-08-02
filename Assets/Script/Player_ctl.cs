@@ -13,6 +13,8 @@ public class Player_ctl : MonoBehaviour
 
     public Rigidbody body;
 
+    public int hp = 100;
+
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
