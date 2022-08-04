@@ -7,9 +7,12 @@ public class UIManager : MonoBehaviour
 {
     public Transform layout;
     public static Dictionary<int, Key> keyDic = new Dictionary<int, Key>();
+    public GameObject canvas;
+
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(canvas);
     }
     private void Start()
     {

@@ -88,7 +88,7 @@ public class Player_skill : MonoBehaviour
         playerTransSave = player.transform.position;
         direction = Player_ctl.direction;
 
-        Instantiate(Resources.Load("Prefab/SkillObj/Skill3Obj"), playerTransSave + new Vector3(direction * 8, 0, 0), Quaternion.identity);
+        Instantiate(Resources.Load("Prefab/SkillObj/Skill3Obj"), playerTransSave, Quaternion.identity);
 
         yield return null;
     }

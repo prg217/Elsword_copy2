@@ -18,5 +18,7 @@ public class Camera : MonoBehaviour
         //부드럽게 이동
         
         transform.rotation = Quaternion.Lerp(transform.rotation, player.transform.rotation, Time.deltaTime * rSpeed); //부드럽게 회전
+        
+        //보스 있으면 보스 보여주고 위험하다고 알리는건 시간 남을때 하자
     }
 }

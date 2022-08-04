@@ -14,8 +14,9 @@ GameObject:
   - component: {fileID: 3603192007288720164}
   - component: {fileID: -5572096019653833074}
   - component: {fileID: -9020682667123464894}
+  - component: {fileID: -5614924238658452752}
   m_Layer: 0
-  m_Name: Monster
+  m_Name: Boss
   m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -61,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e8de43b026c2f554983e88a78671dab0, type: 2}
+  - {fileID: 2100000, guid: c8d786ebb8621754e8c8b2868999bd30, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -124,8 +125,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 100
-  defense: 1
-  power: 10
+  defense: 5
+  power: 20
   time: 0
   timeSave: 0
   timeSave2: 0
+--- !u!114 &-5614924238658452752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3603192007288720165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b05b2345bf637d4cb49af3a14dade2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

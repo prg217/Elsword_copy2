@@ -8,6 +8,8 @@ public class Monster : MonoBehaviour
     RaycastHit hitInfo;
     float speed = 3f;
     float stateSpeed = 1.5f;
+    public int defense = 1; //방어력은 프리팹마다 설정
+    public int power = 10; //파워도 프리팹마다 설정
 
     int layerMask;
     int randomState;
@@ -16,7 +18,6 @@ public class Monster : MonoBehaviour
     public float timeSave2 = 0;
     bool player = false;
 
-    public int power = 10;
     int direction = 1;
 
     bool isAttack = false;

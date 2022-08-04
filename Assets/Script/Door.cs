@@ -28,12 +28,14 @@ public class Door : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Skill" && StageManager.doorOpen == true);
+        if (other.gameObject.tag == "Skill" && StageManager.doorOpen == true) 
         {
             //처음에 hp가 의문의 스킬에 의해서 피 2번 줄어들음
+            //근데 그게 태그가 스킬이 아닌 FloorWall이랑 StageManager이 인식이 됨
             hp--;
             Debug.Log("HP" + hp);
             Debug.Log(other);
+            Debug.Log(StageManager.doorOpen);
         }
     }
 }
