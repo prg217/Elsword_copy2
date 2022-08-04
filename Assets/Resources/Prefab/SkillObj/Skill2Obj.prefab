@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -215478094842834418}
   m_Layer: 0
   m_Name: Skill2Obj
-  m_TagString: Untagged
+  m_TagString: Skill
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -108,4 +108,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71614109539671f418082dfc2730416d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 50

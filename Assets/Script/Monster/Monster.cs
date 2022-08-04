@@ -13,10 +13,13 @@ public class Monster : MonoBehaviour
     int randomState;
     public float time;
     public float timeSave = 0;
+    public float timeSave2 = 0;
     bool player = false;
 
     public int power = 10;
     int direction = 1;
+
+    bool isAttack = false;
 
     private void Awake()
     {
@@ -35,6 +38,7 @@ public class Monster : MonoBehaviour
         if (hp <= 0)
         {
             Destroy(gameObject);
+            StageManager.monsterCount--;
         }
 
         if (player == false)
@@ -102,11 +106,19 @@ public class Monster : MonoBehaviour
             player = true;
             //박스캐스트를 이용해서 하니 Y축도 잡히게 되었다.
             //FloorWall을 인식해서 문제가 있었는데, 레이어를 따로 분리해서 인식시켜주니 정상적으로 작동된다.
-            if (Physics.Raycast(transform.position, transform.right, out hitInfo, 1.5f, layerMask))
+            if (Physics.Raycast(transform.position, transform.right, out hitInfo, 1.5f, layerMask)) 
             {
                 //여기에 공격하는거 넣기
-                //한 1초 동안 기다리고 데미지 들어가게
-                StartCoroutine("Attack");
+                if (isAttack == false)
+                {
+                    isAttack = true;
+                    StartCoroutine("Attack");
+                    timeSave2 = time;
+                }
+                else if (isAttack == true && timeSave2 + 2.5f <= time)
+                {
+                    isAttack = false;
+                }
             }
             else
             {
@@ -120,8 +132,16 @@ public class Monster : MonoBehaviour
             if (Physics.Raycast(transform.position, transform.right * -1, out hitInfo, 1.5f, layerMask))
             {
                 //여기에 공격하는거 넣기
-                StartCoroutine("Attack");
-               
+                if (isAttack == false && timeSave2 + 2.5f <= time)
+                {
+                    isAttack = true;
+                    StartCoroutine("Attack");
+                    timeSave2 = time;
+                }
+                else if (isAttack == true)
+                {
+                    isAttack = false;
+                }
             }
             else
             {
@@ -138,16 +158,11 @@ public class Monster : MonoBehaviour
 
     IEnumerator Attack()
     {
-        for (int i = 0; i < 2; i++)
-        {
-            if (i == 1)
-            {
-                var attack = Instantiate(Resources.Load<GameObject>("Prefab/MonsterAttack/Attack1"), transform.position + new Vector3(direction * 2, 0, 0), Quaternion.identity);
-                attack.GetComponent<Attack1_Script>().power = power;
-            }
-            yield return new WaitForSeconds(1f);
-        }
+        yield return new WaitForSeconds(1f);
+        var attack = Instantiate(Resources.Load<GameObject>("Prefab/MonsterAttack/Attack1"), transform.position + new Vector3(direction * 2, 0, 0), Quaternion.identity);
+        attack.GetComponent<Attack1_Script>().power = power;
 
         //무한반복 안되게 쿨타임 주기
     }
+
 }

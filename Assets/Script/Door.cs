@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 public class Door : MonoBehaviour
 {
     public int hp = 5;
-    public GameObject door;
 
     private void Update()
     {
@@ -25,5 +24,16 @@ public class Door : MonoBehaviour
     {
         SceneManager.LoadScene("Stage2");
         //이것도 일단 이렇게 하지만 따로 enum 부여해서 해주는게
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Skill" && StageManager.doorOpen == true);
+        {
+            //처음에 hp가 의문의 스킬에 의해서 피 2번 줄어들음
+            hp--;
+            Debug.Log("HP" + hp);
+            Debug.Log(other);
+        }
     }
 }

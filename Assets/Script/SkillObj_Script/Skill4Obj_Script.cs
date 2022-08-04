@@ -39,11 +39,6 @@ public class Skill4Obj_Script : MonoBehaviour
             other.GetComponent<Monster>().hp -= damage;
         }
 
-        if (other.gameObject.tag == "Door")
-        {
-            other.GetComponent<Door>().hp -= 1;
-        }
-
         if (other.gameObject.tag == "FloorWall")
         {
             //회전하는 곳에 가면 회전하게 해줌

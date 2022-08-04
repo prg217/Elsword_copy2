@@ -41,10 +41,5 @@ public class Skill1Obj_Script : MonoBehaviour
             //데미지 주기
             other.GetComponent<Monster>().hp -= damage;
         }
-
-        if (other.gameObject.tag == "Door")
-        {
-            other.GetComponent<Door>().hp -= 1;
-        }
     }
 }
