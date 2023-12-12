@@ -30,11 +30,12 @@ public class SkillSpawn_Script : MonoBehaviour
 
     IEnumerator Obj()
     {
+        //스킬1의 경우. 다른 스킬에 적용하기 위해서는 따로 해야함
         for (int i = 0; i < 6; i++)
         {
             if (i != 0)
             {
-                GameObject instance = Instantiate(Resources.Load<GameObject>("Prefab/SkillObj/Skill1Obj"), transform.position, Quaternion.identity);
+                GameObject instance = Instantiate(Resources.Load<GameObject>("Prefab/SkillObj/Skill" + 1 + "Obj"), transform.position, Quaternion.identity);
                 instance.transform.rotation = transform.rotation;
                 instance.transform.Rotate(instance.transform.rotation.x, instance.transform.rotation.y, direction * 15);
             }

@@ -13,7 +13,6 @@ public class Key : MonoBehaviour, IDropHandler
     {
         var skill = eventData.pointerDrag.GetComponent<Skill>();
 
-        //여기서 키 타입을 바꾸게 하고 스킬쪽에서 키 타입에 따라 그 버튼을 누르면 그 스킬쓰게 하면 안돼?
         MyKeyCall(skill);
         SkillCall(skill);
         //스킬을 바꾸고 스킬키 누르면 스킬키에 따라 그 스킬이 나오게 하기

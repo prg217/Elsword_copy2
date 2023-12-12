@@ -49,7 +49,7 @@ public class Player_skill : MonoBehaviour
     IEnumerator Skill1()
     {
         Debug.Log("Skill1");
-        //헤븐즈 피스트?
+
         playerTransSave = player.transform.position;
         direction = Player_ctl.direction;
         //플레이어의 방향값을 불러와 +인지 -인지 해주기
@@ -66,7 +66,7 @@ public class Player_skill : MonoBehaviour
     IEnumerator Skill2()
     {
         Debug.Log("Skill2");
-        //젠즈
+
         player.GetComponent<Rigidbody>().useGravity = false; //true는 스킬 오브젝트가 삭제될 때 같이 true되게 해줬음
         player.transform.position += new Vector3(0, 1.5f, 0);
         Player_ctl.skillAct = true; //이것도 스킬 오브젝트가 삭제될 때
@@ -80,8 +80,7 @@ public class Player_skill : MonoBehaviour
     IEnumerator Skill3()
     {
         Debug.Log("Skill3");
-        //밀키웨이
-        //이것도 수정 필요
+
         player.GetComponent<Rigidbody>().useGravity = false; //true는 스킬 오브젝트가 삭제될 때 같이 true되게 해줬음
         Player_ctl.skillAct = true; //이것도 스킬 오브젝트가 삭제될 때
 
@@ -95,7 +94,7 @@ public class Player_skill : MonoBehaviour
     IEnumerator Skill4()
     {
         Debug.Log("Skill4");
-        //카르마
+
         playerTransSave = player.transform.position;
         direction = Player_ctl.direction;
 
@@ -106,12 +105,10 @@ public class Player_skill : MonoBehaviour
     void Skill5()
     {
         Debug.Log("Skill5");
-        //창 튀어나오기
     }
     void Skill6()
     {
         Debug.Log("Skill6");
-        //레트리뷰션?
     }
     void Skill7()
     {

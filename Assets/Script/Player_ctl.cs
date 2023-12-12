@@ -57,7 +57,6 @@ public class Player_ctl : MonoBehaviour
         {
             direction = 1;
             transform.Translate(Vector3.right * Time.deltaTime * speed);
-            //transform.position += Vector3.right * Time.deltaTime * speed;
         }
     }
 

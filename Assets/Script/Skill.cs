@@ -23,10 +23,11 @@ public class Skill : MonoBehaviour, IDragHandler, IEndDragHandler
     public KeyType keyType;
     public Key key;
 
+    //참고 자료: https://magicmon.tistory.com/102
     public void EnumChange() //Key쪽에서 스킬을 움직일때마다 호출, 여기서 enum KeyType을 바꿔준다. 
     {
         keyType = (KeyType)Enum.Parse(typeof(KeyType), key.name);
-        //참고 자료: https://magicmon.tistory.com/102
+
     }
 
     public void OnDrag(PointerEventData eventData)

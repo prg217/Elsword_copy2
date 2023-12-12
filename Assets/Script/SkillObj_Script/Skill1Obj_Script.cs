@@ -8,8 +8,6 @@ public class Skill1Obj_Script : MonoBehaviour
     bool isFloor = false;
     int damage = 10 * (int)(GameManager.playerPower * 0.05); //전투력 비례 해서 데미지 강해지게 만들어야함
 
-    //public int direction = SkillSpawn_Script.direction;
-
     private void Start()
     {
         Invoke("DestroyObj", 1);
